@@ -66,3 +66,5 @@ videos_sheet.update(
     values=[[v[0], round(v[1]), round(1.0 - v[2] / 300, 2)] for v in videos],
     value_input_option="USER_ENTERED",
 )
+
+print("Ratings Updated!")

@@ -29,16 +29,21 @@ data = input_sheet.get_all_records()
 players = {player[USER]: glicko2.Player() for player in data}
 videos = {video[LINK]: glicko2.Player() for video in data}
 
+difficulties = {
+    "Too Easy": 1.0,
+    "About Right": 0.5,
+    "Too Hard": 0.0,
+}
+
 for row in data:
     player_name = row[USER]
     video_name = row[LINK]
     difficulty = row[DIFFICULTY]
 
-    score = {
-        "Too Easy": 1.0,
-        "About Right": 0.5,
-        "Too Hard": 0.0,
-    }[difficulty]
+    if difficulty not in difficulties:
+        continue
+
+    score = difficulties[difficulty]
 
     player = players[player_name]
     video = videos[video_name]

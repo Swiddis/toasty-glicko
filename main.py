@@ -26,8 +26,8 @@ players_sheet = spreadsheet.get_worksheet(2)
 
 data = input_sheet.get_all_records()
 
-players = {player[USER]: glicko2.Player() for player in data}
-videos = {video[LINK]: glicko2.Player() for video in data}
+players = {player[USER]: glicko2.Player() for player in data if player != ''}
+videos = {video[LINK]: glicko2.Player() for video in data if video != ''}
 
 difficulties = {
     "Too Easy": 1.0,
